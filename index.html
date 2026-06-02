@@ -1,0 +1,1104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐷 Peppa Pig Birthday Party! 🐽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Comic Sans MS', 'Chalkboard SE', 'Fredoka One', cursive, sans-serif;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 50%, #FFC0CB 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(255, 182, 193, 0.4), 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            width: 100%;
+            margin: 20px;
+            position: relative;
+            z-index: 10;
+            border: 3px solid #FFB6C1;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #FF69B4;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
+            font-weight: 700;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .cake {
+            font-size: 4rem;
+            margin: 1rem 0;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: #444;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .prank-button {
+            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+            color: white;
+            border: 3px solid #FF69B4;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+            position: relative;
+            z-index: 100;
+            font-family: 'Segoe UI', 'Comic Sans MS', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .prank-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 182, 193, 0.5);
+        }
+
+        .prank-button:active {
+            transform: translateY(0);
+        }
+
+        .prank-button.moving {
+            position: fixed;
+            transition: none;
+        }
+
+        .message {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: #FFF5F7;
+            border-radius: 15px;
+            border: 2px solid #FFB6C1;
+            display: none;
+            animation: slideIn 0.5s ease;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .counter {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .balloons {
+            position: fixed;
+            font-size: 3rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            animation: sparkle 1s ease forwards;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        .success-screen {
+            display: none;
+            text-align: center;
+            animation: celebrate 0.5s ease;
+            padding: 3rem;
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E1 50%, #FFC0CB 100%);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.5);
+            max-width: 700px;
+            margin: 20px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-screen h2 {
+            font-size: 3rem;
+            color: #FF69B4;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
+        }
+
+        .success-screen .heart {
+            font-size: 5rem;
+            animation: heartbeat 1s ease infinite;
+            margin: 1.5rem 0;
+        }
+
+        .success-screen p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .success-screen strong {
+            color: #FF1493;
+            font-weight: 700;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* New prank stages styles */
+        .stage {
+            display: none;
+            text-align: center;
+        }
+
+        .stage.active {
+            display: block;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #FF69B4, #FFB6C1, #87CEEB);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .captcha-box {
+            background: #FFF5F7;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border: 2px solid #FFB6C1;
+        }
+
+        .captcha-images {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .captcha-img {
+            width: 80px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .captcha-img:hover {
+            transform: scale(1.1);
+            border-color: #FF69B4;
+        }
+
+        .captcha-img.selected {
+            border-color: #FF69B4;
+            background: #FFE4E1;
+        }
+
+        .color-game {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #333;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 2px solid #FFB6C1;
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-family: 'Segoe UI', 'Comic Sans MS', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #FF69B4;
+            box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+        }
+
+        .password-requirements {
+            text-align: left;
+            font-size: 0.9rem;
+            color: #666;
+            margin: 1rem 0;
+        }
+
+        .password-requirements li {
+            margin: 0.5rem 0;
+            list-style: none;
+        }
+
+        .password-requirements li::before {
+            content: "❌ ";
+        }
+
+        .password-requirements li.valid::before {
+            content: "✅ ";
+        }
+
+        .error-message {
+            color: #FF1493;
+            font-weight: bold;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .math-problem {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            padding: 1.2rem;
+            background: #FFF5F7;
+            border-radius: 15px;
+            border: 2px solid #FFB6C1;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .confirmation-dialog {
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .confirmation-box {
+            background: #FFF5F7;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            border: 3px solid #FFB6C1;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .confirmation-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .confirm-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .confirm-yes {
+            background: #FF69B4;
+            color: white;
+        }
+
+        .confirm-no {
+            background: #87CEEB;
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin: 10px;
+                max-width: 95%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .prank-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .cake {
+                font-size: 3rem;
+            }
+
+            .captcha-images {
+                gap: 5px;
+            }
+
+            .captcha-img {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .color-btn {
+                width: 60px;
+                height: 60px;
+            }
+
+            .math-problem {
+                font-size: 1.5rem;
+            }
+
+            .password-input {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+
+            .balloons {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons" style="top: 10%; left: 5%;">🐷</div>
+    <div class="balloons" style="top: 15%; right: 8%; animation-delay: 1s;">🐽</div>
+    <div class="balloons" style="top: 5%; left: 50%; animation-delay: 2s;">🐽</div>
+
+    <!-- Stage 1: Moving Button -->
+    <div class="container stage active" id="stage1">
+        <h1>🐷 Birthday Gift from your Lovee 🐷</h1>
+        <div class="cake">🎂</div>
+        <p>
+            Hey babe! Birthday surprise just for you! 
+            Distance wont seperate us sanuu Im always here! 🎁💕
+        </p>
+        <button class="prank-button" id="prankButton">Open Gift! 🎁</button>
+        <div class="counter" id="counter">Attempts: 0</div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <!-- Stage 2: Fake Loading -->
+    <div class="container stage" id="stage2">
+        <h1>🎁 Loading Gift... 🎁</h1>
+        <div class="cake">🐽🐽🐽</div>
+        <p>Loading your gift, babe...</p>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+        <p id="loadingText">Initializing...</p>
+    </div>
+
+    <!-- Stage 3: Impossible Captcha -->
+    <div class="container stage" id="stage3">
+        <h1>🐷 Prove You're a Pig like you are BAHAHA! 🐷</h1>
+        <div class="cake">🔐</div>
+        <p>Select all images with birthday cakes, babe:</p>
+        <div class="captcha-box">
+            <div class="captcha-images" id="captchaImages"></div>
+            <button class="prank-button" id="captchaSubmit">Verify</button>
+            <div class="error-message" id="captchaError">❌ Wrong! Try again! 🐷</div>
+        </div>
+    </div>
+
+    <!-- Stage 4: Color Matching -->
+    <div class="container stage" id="stage4">
+        <h1>🎨 Color Game! 🎨</h1>
+        <div class="cake">🌈</div>
+        <p>Click the color that matches the word, babe:</p>
+        <div class="math-problem" id="colorWord" style="font-size: 3rem; color: #ff0000;">BLUE</div>
+        <div class="color-game" id="colorGame"></div>
+        <div class="error-message" id="colorError">❌ Wrong color! 😜</div>
+    </div>
+
+    <!-- Stage 5: Math Problem -->
+    <div class="container stage" id="stage5">
+        <h1>🧮 Math! 🧮</h1>
+        <div class="cake">🔢</div>
+        <p>Solve this to continue, babe:</p>
+        <div class="math-problem" id="mathProblem"></div>
+        <div class="captcha-box" id="mathOptionsContainer"></div>
+        <div class="error-message" id="mathError">❌ Wrong! The answer was different! 😂</div>
+    </div>
+
+    <!-- Stage 6: MCQ Quiz -->
+    <div class="container stage" id="stage6">
+        <h1>❓ Quiz! ❓</h1>
+        <div class="cake">🤔</div>
+        <p id="questionText">Answer this question, babe:</p>
+        <div class="math-problem" id="questionDisplay">What is Nischal's favourite food?</div>
+        <div class="captcha-box" id="optionsContainer"></div>
+        <div class="error-message" id="answerError">❌ Wrong! Try again, babe! 😈</div>
+    </div>
+
+    <!-- Stage 7: Confirmation Loop -->
+    <div class="container stage" id="stage7">
+        <h1>❓ Are You Sure, Babe? ❓</h1>
+        <div class="cake">🤔</div>
+        <p>Are you absolutely sure you want to see the birthday gift, babe?</p>
+        <button class="prank-button" id="confirmYes">Yes, I'm Sure! 🐷</button>
+        <button class="prank-button" id="confirmNo" style="background: linear-gradient(45deg, #87CEEB, #FFB6C1);">No, Go Back 🐽</button>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="success-screen" id="successScreen">
+        <h2>🎉 You Did It! 🎉</h2>
+        <div class="heart">❤️</div>
+        <p style="margin-top: 1rem;">
+            YOU DID ITTTTT MAYAAAAA , HERE IS THE MESSAGE<br><br>
+            <strong>Happy Birthday, babe! You're amazing and I'm so lucky to have you! The distance between us might be hard but just know I will be there with you everyday even from far away , this is just a small gesture of how much i really love you, you deserve the world sanu, Just dont let yourself down ever, I will always be there for you just ring up a call with me and we'll fix it together , hope it becomes the best birthdayyyyy you will ever have and just know you're charming just like the roses and dont stop glooming and growing, you are perfect babe , I wish you were here with me but ughhh this distance sucks, Still I wish HAPPYYYY BIRTHDAYY AGAIN BITCHH  ITS YOUR SPECIAL DAYYY , ENJOYY ITTT ! LOVE YOU FROM THE BOTTOM OF MY HEART MUAAAHHHHHHHHHHH💕</strong>
+        </p>
+        <button class="prank-button" onclick="location.reload()" style="margin-top: 2rem;">Play Again! 🔄</button>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div class="confirmation-dialog" id="confirmationDialog">
+        <div class="confirmation-box">
+            <h2>⚠️ Warning! ⚠️</h2>
+            <p>Are you REALLY sure, babe? This action cannot be undone!</p>
+            <div class="confirmation-buttons">
+                <button class="confirm-btn confirm-yes" id="dialogYes">Yes!</button>
+                <button class="confirm-btn confirm-no" id="dialogNo">No!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sound Effects
+        const soundEffects = {
+            oink: () => {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                // Sound - low to high pitch
+                oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.1);
+                oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.2);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.3);
+            },
+            // Aliases for compatibility
+            slideWhistle: function() { this.oink(); },
+            boing: function() { this.oink(); },
+            wrong: function() { this.oink(); },
+            success: function() { 
+                for(let i = 0; i < 3; i++) {
+                    setTimeout(() => this.oink(), i * 200);
+                }
+            },
+            sparkle: function() { this.oink(); },
+            fart: function() { this.oink(); }
+        };
+
+        // Stage Management
+        let currentStage = 1;
+        const totalStages = 7;
+
+        function showStage(stageNum) {
+            document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+            document.getElementById(`stage${stageNum}`).classList.add('active');
+        }
+
+        function nextStage() {
+            if (currentStage < totalStages) {
+                currentStage++;
+                showStage(currentStage);
+                initStage(currentStage);
+            } else {
+                showSuccess();
+            }
+        }
+
+        function showSuccess() {
+            document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+            document.getElementById('successScreen').style.display = 'block';
+            soundEffects.success();
+            createConfetti();
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 100);
+            }
+        }
+
+        // Stage 1: Moving Button
+        const button = document.getElementById('prankButton');
+        const message = document.getElementById('message');
+        const counter = document.getElementById('counter');
+        
+        let attempts = 0;
+        let moveCount = 0;
+        const maxMoves = 5;
+        
+        // Store original position
+        const originalRect = button.getBoundingClientRect();
+        const originalX = originalRect.left;
+        const originalY = originalRect.top;
+        
+        const funnyMessages = [
+            "Oops! Missed! 😜",
+            "Too slow! 🐢",
+            "Nice try! 🎯",
+            "Almost there! 🤏",
+            "Keep going! 💪",
+            "You can do it! 🌟",
+            "Don't give up! 🏃",
+            "Faster! ⚡",
+            "So close! 😅",
+            "One more try! 🎪",
+            "Are you tired yet, babe? 😴",
+            "Still trying? 😂",
+            "This button is shy! 🙈",
+            "Catch me if you can, babe! 🏃",
+            "Last chance! 🎯",
+            "You're so slow, babe! 🐽",
+            "Give up yet, babe? 😜",
+            "Peppa is laughing at you! 😂",
+            "Almost there... NOT! 😈",
+            "Keep clicking, babe! 👆"
+        ];
+
+        function moveButton() {
+            const zigzagOffset = 150; // How far to zig-zag
+            const direction = moveCount % 2 === 0 ? 1 : -1; // Alternate direction
+            
+            const newX = originalX + (direction * zigzagOffset);
+            const newY = originalY + (moveCount * 30); // Move down slightly each time
+            
+            button.style.position = 'fixed';
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+            button.style.zIndex = '1000';
+            button.classList.add('moving');
+        }
+
+        button.addEventListener('click', (e) => {
+            attempts++;
+            counter.textContent = `Attempts: ${attempts}`;
+            
+            if (moveCount < maxMoves) {
+                moveCount++;
+                moveButton();
+                soundEffects.fart();
+                
+                message.style.display = 'block';
+                message.textContent = funnyMessages[Math.min(moveCount - 1, funnyMessages.length - 1)];
+                
+                createSparkle(e.clientX, e.clientY);
+            } else {
+                soundEffects.oink();
+                nextStage();
+            }
+        });
+
+        button.addEventListener('mouseover', () => {
+            if (moveCount > 0 && moveCount < maxMoves) {
+                soundEffects.sparkle();
+            }
+        });
+
+        // Stage 2: Fake Loading
+        function initStage(stage) {
+            if (stage === 2) {
+                fakeLoading();
+            } else if (stage === 3) {
+                initCaptcha();
+            } else if (stage === 4) {
+                initColorGame();
+            } else if (stage === 5) {
+                initMathProblem();
+            } else if (stage === 6) {
+                initQAStage();
+            }
+        }
+
+        function fakeLoading() {
+            const progress = document.getElementById('loadingProgress');
+            const text = document.getElementById('loadingText');
+            let percentage = 0;
+            
+            const loadingMessages = [
+                "Initializing gift system...",
+                "Wrapping present with mud...",
+                "Adding confetti...",
+                "Writing birthday card...",
+                "Baking virtual cake...",
+                "Inflating balloons...",
+                "Almost there, babe...",
+                "Just a moment more...",
+                "Loading happiness...",
+                "Preparing surprise..."
+            ];
+            
+            const interval = setInterval(() => {
+                percentage += 2;
+                
+                if (percentage >= 100) {
+                    percentage = 100;
+                    text.textContent = '100% - Done! 🐷';
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        soundEffects.oink();
+                        nextStage();
+                    }, 500);
+                } else {
+                    text.textContent = loadingMessages[Math.floor(percentage / 10)];
+                }
+                
+                progress.style.width = percentage + '%';
+            }, 100);
+        }
+
+        // Stage 3: Impossible Captcha
+        function initCaptcha() {
+            const container = document.getElementById('captchaImages');
+            container.innerHTML = '';
+            
+            const emojis = ['🎂', '🐷', '🧁', '🎁', '🐽', '🎉', '🎊', '🥳'];
+            const selected = [];
+            
+            // Ensure at least 2 cakes are always included
+            const cakeIndices = [];
+            while (cakeIndices.length < 2) {
+                const idx = Math.floor(Math.random() * 9);
+                if (!cakeIndices.includes(idx)) {
+                    cakeIndices.push(idx);
+                }
+            }
+            
+            for (let i = 0; i < 9; i++) {
+                const img = document.createElement('div');
+                img.className = 'captcha-img';
+                
+                let emoji;
+                if (cakeIndices.includes(i)) {
+                    emoji = '🎂';
+                } else {
+                    emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    if (emoji === '🎂') {
+                        emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    }
+                }
+                
+                img.textContent = emoji;
+                img.dataset.emoji = emoji;
+                
+                if (emoji === '🎂') {
+                    selected.push(img);
+                }
+                
+                img.addEventListener('click', () => {
+                    img.classList.toggle('selected');
+                    soundEffects.oink();
+                });
+                
+                container.appendChild(img);
+            }
+            
+            document.getElementById('captchaSubmit').onclick = () => {
+                const selectedImgs = container.querySelectorAll('.selected');
+                const hasCake = Array.from(selectedImgs).some(img => img.dataset.emoji === '🎂');
+                const hasNonCake = Array.from(selectedImgs).some(img => img.dataset.emoji !== '🎂');
+                
+                // Check if correct (only cakes selected)
+                if (hasCake && !hasNonCake) {
+                    soundEffects.success();
+                    nextStage();
+                } else {
+                    soundEffects.wrong();
+                    document.getElementById('captchaError').style.display = 'block';
+                    
+                    setTimeout(() => {
+                        document.getElementById('captchaError').style.display = 'none';
+                        container.querySelectorAll('.captcha-img').forEach(img => {
+                            img.classList.remove('selected');
+                        });
+                    }, 1500);
+                }
+            };
+        }
+
+        // Stage 4: Color Matching (Stroop Effect)
+        function initColorGame() {
+            const colors = [
+                { name: 'RED', color: '#ff0000' },
+                { name: 'BLUE', color: '#0000ff' },
+                { name: 'GREEN', color: '#00ff00' },
+                { name: 'YELLOW', color: '#ffff00' }
+            ];
+            
+            const word = document.getElementById('colorWord');
+            const game = document.getElementById('colorGame');
+            game.innerHTML = '';
+            
+            const targetColor = colors[Math.floor(Math.random() * colors.length)];
+            const displayColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            word.textContent = targetColor.name;
+            word.style.color = displayColor.color;
+            
+            colors.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'color-btn';
+                btn.style.background = c.color;
+                btn.onclick = () => {
+                    // Correct answer: click the color that matches the word meaning
+                    if (c.name === targetColor.name) {
+                        soundEffects.success();
+                        nextStage();
+                    } else {
+                        soundEffects.wrong();
+                        document.getElementById('colorError').style.display = 'block';
+                        document.getElementById('colorError').textContent = '❌ Wrong! Try again, babe! 😂';
+                        setTimeout(() => {
+                            document.getElementById('colorError').style.display = 'none';
+                        }, 1500);
+                    }
+                };
+                game.appendChild(btn);
+            });
+        }
+
+        // Stage 5: Math Problem
+        function initMathProblem() {
+            const problem = document.getElementById('mathProblem');
+            const a = Math.floor(Math.random() * 100);
+            const b = Math.floor(Math.random() * 100);
+            const c = Math.floor(Math.random() * 100);
+            const correctAnswer = a + b * c;
+            
+            problem.textContent = `${a} + ${b} × ${c} = ?`;
+            
+            // Generate wrong options
+            const wrongOptions = [
+                correctAnswer + Math.floor(Math.random() * 50) + 10,
+                correctAnswer - Math.floor(Math.random() * 50) - 10,
+                correctAnswer + Math.floor(Math.random() * 100) + 20,
+                correctAnswer * 2
+            ];
+            
+            const container = document.getElementById('mathOptionsContainer');
+            container.innerHTML = '';
+            
+            wrongOptions.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'prank-button';
+                btn.style.margin = '10px';
+                btn.textContent = option;
+                btn.onclick = () => {
+                    soundEffects.wrong();
+                    document.getElementById('mathError').style.display = 'block';
+                    document.getElementById('mathError').textContent = '❌ Youre dumb! All options are wrong! 😂 Moving on anyway...';
+                    
+                    setTimeout(() => {
+                        document.getElementById('mathError').style.display = 'none';
+                        nextStage();
+                    }, 2000);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // Stage 6: MCQ Quiz
+        let currentQuestion = 0;
+        const questions = [
+            { 
+                question: "What is Nischal's favourite food?", 
+                options: ["momo", "YOUUUU", "keemanoodles", "masuuu"],
+                correct: "momo",
+                customMessage: "Wouldn't be mad if you said yourself bahaha"
+            },
+            { 
+                question: "How much do you love me?", 
+                options: ["75%", "50%", "100%"],
+                correct: "100%",
+                customMessage: "I love you too! 💕"
+            },
+            { 
+                question: "Will you hit me?", 
+                options: ["yes", "yes"],
+                correct: "both",
+                customMessage: "I knew you would abuse me nigga"
+            },
+            { 
+                question: "Would you love Nischal if he was a worm?", 
+                options: ["yes", "No"],
+                correct: "both",
+                customMessage: "i knew it bahahahha 😂"
+            },
+            { 
+                question: "Would you kiss another guy for 50000 Rupees?", 
+                options: ["Yes", "No"],
+                correct: "custom",
+                customMessages: {
+                    "Yes": "Go with that guy then 😈",
+                    "No": "Good job im proud of you! 💕"
+                }
+            },
+            { 
+                question: "Would you love my identical twin if I had one?", 
+                options: ["yes", "no"],
+                correct: "custom",
+                customMessages: {
+                    "yes": "I knew you never loved me 😢",
+                    "no": "oh yes you dont like me how i look 😢"
+                }
+            }
+        ];
+        
+        function initQAStage() {
+            currentQuestion = 0;
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            document.getElementById('questionDisplay').textContent = questions[currentQuestion].question;
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            
+            questions[currentQuestion].options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'prank-button';
+                btn.style.margin = '10px';
+                btn.textContent = option;
+                btn.onclick = () => {
+                    const q = questions[currentQuestion];
+                    let isCorrect = false;
+                    let message = null;
+                    
+                    if (q.correct === "both") {
+                        isCorrect = true;
+                        message = q.customMessage;
+                    } else if (q.correct === "custom" && q.customMessages) {
+                        isCorrect = true;
+                        message = q.customMessages[option];
+                    } else if (option === q.correct) {
+                        isCorrect = true;
+                        message = q.customMessage;
+                    }
+                    
+                    if (isCorrect) {
+                        soundEffects.success();
+                        
+                        if (message) {
+                            document.getElementById('answerError').style.display = 'block';
+                            document.getElementById('answerError').textContent = message;
+                            
+                            setTimeout(() => {
+                                document.getElementById('answerError').style.display = 'none';
+                                currentQuestion++;
+                                if (currentQuestion < questions.length) {
+                                    showQuestion();
+                                } else {
+                                    nextStage();
+                                }
+                            }, 2000);
+                        } else {
+                            currentQuestion++;
+                            if (currentQuestion < questions.length) {
+                                showQuestion();
+                            } else {
+                                nextStage();
+                            }
+                        }
+                    } else {
+                        soundEffects.wrong();
+                        document.getElementById('answerError').style.display = 'block';
+                        document.getElementById('answerError').textContent = '❌ Wrong! Try again, babe! 😈';
+                        
+                        setTimeout(() => {
+                            document.getElementById('answerError').style.display = 'none';
+                        }, 1500);
+                    }
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // Stage 7: Confirmation
+        document.getElementById('confirmYes').onclick = () => {
+            soundEffects.success();
+            nextStage();
+        };
+        
+        document.getElementById('confirmNo').onclick = () => {
+            soundEffects.wrong();
+            alert("Nice try! But you can't go back now, babe! 😈");
+        };
+        
+        document.getElementById('dialogYes').onclick = () => {
+            document.getElementById('confirmationDialog').style.display = 'none';
+        };
+        
+        document.getElementById('dialogNo').onclick = () => {
+            document.getElementById('confirmationDialog').style.display = 'none';
+            alert("Too late! You must continue, babe! 😜");
+        };
+
+        // Helper functions
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['✨', '⭐', '💫', '🌟'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        function createConfetti() {
+            const colors = ['#FF69B4', '#FFB6C1', '#87CEEB', '#FF1493', '#FFC0CB', '#98FB98'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Create initial confetti
+        setTimeout(createConfetti, 500);
+    </script>
+</body>
+</html>
